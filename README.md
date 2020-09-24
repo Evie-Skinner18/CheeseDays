@@ -1,4 +1,4 @@
-# Welcome to Cheese Days! / Bienvenu chez Cheese Days! / !اهلا بتشيس دايس
+# Welcome to Cheese Days! / Bienvenue chez Cheese Days! / !اهلا بتشيس دايس
 
 ## A Multilingual Vue 2 Application
 
