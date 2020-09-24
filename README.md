@@ -1,24 +1,11 @@
-# multilingual-app
+# Welcome to Cheese Days! / Bienvenu chez Cheese Days! / !اهلا بتشيس دايس
 
-## Project setup
-```
-npm install
-```
+## A Multilingual Vue 2 Application
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Tools and Technologies Used:
+- Vue
+- Typescript
+- HTML
+- CSS
+- Git
+- Vue i18n
