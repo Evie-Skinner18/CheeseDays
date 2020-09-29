@@ -1,9 +1,9 @@
 <template>
     <nav class="navalicious">
         <span class="cheese-items">
-            <a href="#emmental-section">Emmental</a>
-            <a href="#roquefort-section">Roquefort</a>
-            <a href="#cheddar-section">Cheddar</a>
+            <router-link to="/">Home</router-link>
+            <router-link to="/quotes">Quotes</router-link>
+            <router-link to="/cheese">Cheese</router-link>
         </span>
     </nav>    
 </template>

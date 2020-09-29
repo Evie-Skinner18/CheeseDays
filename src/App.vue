@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Navbar />
-    <CheeseSection msg="Cheese Days"/>
+    <router-view />
   </div>
 </template>
 
