@@ -1,26 +1,36 @@
 <template>
-    <h1>I am a Quote!</h1>
-    
+    <div>
+        <h1>{{ randomQuote.quoteText }}</h1>
+        <h3>- {{ randomQuote.quoteAuthor }}</h3>
+        <hr>
+    </div>    
 </template>
 
 
 
 <script lang="ts">
+import { RandomQuote, RandomQuoteResponse } from '@/types/QuoteDtos';
 import { Component, Prop, Vue } from 'vue-property-decorator'; 
 import { QuotesProvider } from '../providers/QuotesProvider';
-import { IQuote } from '../types/Quote';
 
 @Component
 export default class Quote extends Vue {
-    randomQuote!: Quote;
+    randomQuote!: RandomQuote;
     quotesProvider: QuotesProvider = new QuotesProvider();
 
-    public async getRandomQuote(): Promise<Quote> {
-        var randomQuote = await this.quotesProvider.GetRandomQuote();
+    public async setRandomQuote(): Promise<void> {
+        this.randomQuote = await this.getRandomQuote();
+    }
 
-        if(randomQuote.quoteText) {
-            return randomQuote;
+    public async getRandomQuote(): Promise<RandomQuote> {
+        const randomQuoteReasponse = await this.quotesProvider.GetRandomQuote();
+        const randomQuote = randomQuoteReasponse.randomQuote;
+
+        if(!randomQuote) {
+            return new RandomQuote();
         }
+
+        return randomQuote;
     }
 }
 </script>

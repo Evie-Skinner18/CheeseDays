@@ -11,3 +11,9 @@ export default {
   }
 }
 </script>
+
+<style lang="css" scoped>
+  .home {
+    padding-top: 80px; ;
+  }
+</style>
