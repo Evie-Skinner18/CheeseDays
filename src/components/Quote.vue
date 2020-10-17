@@ -9,28 +9,36 @@
 
 
 <script lang="ts">
-import { RandomQuote, RandomQuoteResponse } from '@/types/QuoteDtos';
-import { Component, Prop, Vue } from 'vue-property-decorator'; 
+import { RandomQuote } from '@/types/QuoteDtos';
+import { Component, Vue } from 'vue-property-decorator'; 
 import { QuotesProvider } from '../providers/QuotesProvider';
 
-@Component
+const quotesProvider = new QuotesProvider();
+
+@Component({
+    name: 'Quote',
+  })
+
 export default class Quote extends Vue {
     randomQuote!: RandomQuote;
-    quotesProvider: QuotesProvider = new QuotesProvider();
+    //quotesProvider: QuotesProvider;
 
-    public async setRandomQuote(): Promise<void> {
-        this.randomQuote = await this.getRandomQuote();
-    }
+    public async getQuote(): Promise<RandomQuote> {
+        const randomQuoteResponse = await quotesProvider.GetRandomQuote();
+        const quote = randomQuoteResponse.randomQuote;
 
-    public async getRandomQuote(): Promise<RandomQuote> {
-        const randomQuoteReasponse = await this.quotesProvider.GetRandomQuote();
-        const randomQuote = randomQuoteReasponse.randomQuote;
-
-        if(!randomQuote) {
+        if(!quote) {
             return new RandomQuote();
         }
 
-        return randomQuote;
+        return quote;
+    }
+
+    async beforeCreate(): Promise<void> {
+        //console.log(this);
+        const randomQuote = await this.getQuote();
+        console.log(randomQuote);
+        this.randomQuote = randomQuote;
     }
 }
 </script>

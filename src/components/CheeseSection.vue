@@ -10,7 +10,7 @@
     <!-- for R to L languages, the plural must be on the left -->
     <h1>{{ $tc('insight', 2) }}</h1>
     <HelloI18n />
-
+    <h3>{{ hello }}</h3>
   </div>
 </template>
 
@@ -39,6 +39,14 @@ export default class CheeseSection extends Vue {
 
   public changeLocale(locale: string): void {
     this.$i18n.locale = locale;
+  }
+
+  public sayHello(): string {
+    return "HELLO";
+  }
+
+  get hello(): string {
+    return this.sayHello();
   }
 
 }
