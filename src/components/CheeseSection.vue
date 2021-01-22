@@ -1,5 +1,5 @@
 <template>
-  <div class="cheese-section">
+  <v-container class="cheese-section">
     <img alt="Photo of a cheese" class="cheese-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Mahon_Cheese.JPG/1200px-Mahon_Cheese.JPG">
     <!-- for the real thing we should use component interpolation with the i18n functional component to avoid XSS attacks. Not sure I understand how to do this yet -->
     <h1>{{ $t('welcome') }}</h1>
@@ -10,18 +10,24 @@
     <!-- for R to L languages, the plural must be on the left -->
     <h1>{{ $tc('insight', 2) }}</h1>
     <HelloI18n />
-
-  </div>
+    <h1>Add a beer to your cheese!</h1>
+    <BeerForm />
+    <BeerComponent />
+  </v-container>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import HelloI18n from './HelloI18n.vue';
+import BeerComponent from './BeerComponent.vue';
+import BeerForm from './BeerForm.vue';
 
 
 @Component({
   components: {
-    HelloI18n
+    HelloI18n,
+    BeerComponent,
+    BeerForm
   },
 })
 export default class CheeseSection extends Vue {
