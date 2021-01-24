@@ -11,8 +11,8 @@
     <h1>{{ $tc('insight', 2) }}</h1>
     <HelloI18n />
     <h1>Add a beer to your cheese!</h1>
-    <BeerForm />
-    <BeerComponent />
+    <BeerForm @beerAdded="addBeer"/>
+    <BeerComponent :beer="beer" v-if="beer && beer.name != ''"/>
   </v-container>
 </template>
 
@@ -21,7 +21,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 import HelloI18n from './HelloI18n.vue';
 import BeerComponent from './BeerComponent.vue';
 import BeerForm from './BeerForm.vue';
-
+import { Beer } from '../domain/beer/Beer';
 
 @Component({
   components: {
@@ -32,6 +32,8 @@ import BeerForm from './BeerForm.vue';
 })
 export default class CheeseSection extends Vue {
   @Prop() private msg!: string;
+  
+  beer: Beer = Beer.EMPTY();
 
   get languages(): Array<object> {
     const languages = [
@@ -47,6 +49,9 @@ export default class CheeseSection extends Vue {
     this.$i18n.locale = locale;
   }
 
+  private addBeer(beer: Beer): void{
+    this.beer = beer;
+  }
 }
 </script>
 
