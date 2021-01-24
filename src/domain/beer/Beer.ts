@@ -2,8 +2,8 @@ import { BeerType } from './Enums';
 
 export class Beer {
     name!: string;
-    type: BeerType;
-    strength!: number;
+    type?: BeerType;
+    strength?: number;
     country!: string;
     flavourProfile!: string;
 
