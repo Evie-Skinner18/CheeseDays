@@ -6,8 +6,14 @@
       <v-select v-model="beer.type" :items="beerTypes" :rules="[v => !!v || 'Type is required']" 
         label="Type" required>
       </v-select>
+
+      <v-text-field v-model="beer.strength" label="Strength" required>
+      </v-text-field>
   
       <v-text-field v-model="beer.country" label="Country" required>
+      </v-text-field>
+
+      <v-text-field v-model="beer.flavourProfile" label="Flavour Profile" required>
       </v-text-field>
   
       <v-btn
