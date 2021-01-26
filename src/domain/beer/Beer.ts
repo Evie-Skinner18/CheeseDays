@@ -19,6 +19,11 @@ export class Beer {
         return new Beer('','','');
     }
 
+    public getBeerTypeString(): string {
+        const beerType = BeerType[this.type as number];
+        return beerType;
+    }
+
     public getCheesePairing(): string {
         let cheesePairing = '';
         const isSweetBeer = this.flavourProfile.includes('sweet');
