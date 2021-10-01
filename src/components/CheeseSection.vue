@@ -1,13 +1,17 @@
 <template>
   <v-container class="cheese-section">
     <img alt="Photo of a cheese" class="cheese-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Mahon_Cheese.JPG/1200px-Mahon_Cheese.JPG">
-    <!-- for the real thing we should use component interpolation with the i18n functional component to avoid XSS attacks. Not sure I understand how to do this yet -->
     <h1>{{ $t('welcome') }}</h1>
     <button v-for="language in languages" :key="language.title" @click="changeLocale(language.language)" class="language-button">
       {{ language.title }}
     </button>
+    
+    <v-tabs>
+      <v-tab>Cheese</v-tab>
+      <v-tab>Beer</v-tab>
+    </v-tabs>
+
     <h2>{{ $t('book-a-cheese') }}</h2>
-    <!-- for R to L languages, the plural must be on the left -->
     <h1>{{ $tc('insight', 2) }}</h1>
     <HelloI18n />
     <h1>Add a beer to your cheese!</h1>
