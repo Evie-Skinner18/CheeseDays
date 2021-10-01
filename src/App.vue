@@ -1,31 +1,25 @@
 <template>
-  <div id="app">
-    <Navbar />
-    <CheeseSection msg="Cheese Days"/>
-  </div>
+  <v-app>
+    <v-main>
+      <Navbar/>
+      <CheeseSection/>
+    </v-main>
+  </v-app>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import CheeseSection from './components/CheeseSection.vue';
+import { Vue } from 'vue-property-decorator';
 import Navbar from './components/Navbar.vue';
+import CheeseSection from './components/CheeseSection.vue';
 
-@Component({
+export default Vue.extend({
+  name: 'App',
+
   components: {
     CheeseSection,
     Navbar
-  },
-})
-export default class App extends Vue {}
+  }
+});
 </script>
 
-<style scoped>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  background: #ffeabf;
-}
-</style>
+
