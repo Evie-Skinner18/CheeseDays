@@ -1,15 +1,16 @@
-import { BeerType } from './Enums';
+import { BeerTypeOption } from '../Enums';
+import { BeerType } from './BeerType';
 
 export class Beer {
     name!: string;
-    type?: BeerType;
+    type: BeerType;
     strength?: number;
     country!: string;
     flavourProfile!: string;
 
-    constructor(name: string, country: string, flavourProfile: string, type?: BeerType, strength?: number){
+    constructor(name: string, country: string, flavourProfile: string, typeOption?: BeerTypeOption, strength?: number){
         this.name = name,
-        this.type = type,
+        this.type = BeerType.FromBeerTypeOption(typeOption);
         this.strength = strength,
         this.country = country,
         this.flavourProfile = flavourProfile
@@ -19,8 +20,8 @@ export class Beer {
         return new Beer('','','');
     }
 
-    public getBeerTypeString(): string {
-        const beerType = BeerType[this.type as number];
+    public getBeerTypeOption(): string {
+        const beerType = BeerTypeOption[this.type.typeOption as number];
         return beerType;
     }
 
@@ -40,14 +41,14 @@ export class Beer {
     }
 
     public getColour(): string {
-        switch (this.type) {
-            case BeerType.Porter:
-            case BeerType.Stout:
+        switch (this.type?.typeOption) {
+            case BeerTypeOption.Porter:
+            case BeerTypeOption.Stout:
                 return 'dark'
-            case BeerType.Pilsener:
-            case BeerType.PaleAle:
+            case BeerTypeOption.Pilsener:
+            case BeerTypeOption.PaleAle:
                 return 'light'
-            case BeerType.Bitter:
+            case BeerTypeOption.Bitter:
                 return 'amber'
             default:
                 return 'We don\'t know the colour of this beer'
@@ -55,8 +56,8 @@ export class Beer {
     }
 
     public isWinterBeer(): boolean {
-        const isWinterBeer = 
-        this.type === BeerType.Porter || this.type === BeerType.Stout ? true : false;
+        const isWinterBeer = this.type?.typeOption === BeerTypeOption.Porter || 
+        this.type?.typeOption === BeerTypeOption.Stout ? true : false;
 
         return isWinterBeer;
     }

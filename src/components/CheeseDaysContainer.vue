@@ -1,36 +1,40 @@
 <template>
   <v-container class="cheese-section">
     <img alt="Photo of a cheese" class="cheese-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Mahon_Cheese.JPG/1200px-Mahon_Cheese.JPG">
-    <!-- for the real thing we should use component interpolation with the i18n functional component to avoid XSS attacks. Not sure I understand how to do this yet -->
     <h1>{{ $t('welcome') }}</h1>
     <button v-for="language in languages" :key="language.title" @click="changeLocale(language.language)" class="language-button">
       {{ language.title }}
     </button>
+    
+    <v-tabs>
+      <v-tab>Cheese</v-tab>
+      <v-tab>Beer</v-tab>
+    </v-tabs>
+
     <h2>{{ $t('book-a-cheese') }}</h2>
-    <!-- for R to L languages, the plural must be on the left -->
     <h1>{{ $tc('insight', 2) }}</h1>
     <HelloI18n />
     <h1>Add a beer to your cheese!</h1>
     <BeerForm @beerAdded="addBeer"/>
-    <BeerComponent :beer="beer" v-if="beer && beer.name != ''"/>
+    <BeerSummary :beer="beer" v-if="beer && beer.name != ''"/>
   </v-container>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import HelloI18n from './HelloI18n.vue';
-import BeerComponent from './BeerComponent.vue';
+import BeerSummary from './BeerSummary.vue';
 import BeerForm from './BeerForm.vue';
 import { Beer } from '../domain/beer/Beer';
 
 @Component({
   components: {
     HelloI18n,
-    BeerComponent,
+    BeerSummary,
     BeerForm
   },
 })
-export default class CheeseSection extends Vue {
+export default class CheeseDaysContainer extends Vue {
   @Prop() private msg!: string;
   
   beer: Beer = Beer.EMPTY();
@@ -55,7 +59,6 @@ export default class CheeseSection extends Vue {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h3 {
   margin: 40px 0 0;
