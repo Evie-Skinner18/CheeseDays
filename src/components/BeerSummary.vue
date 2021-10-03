@@ -9,7 +9,15 @@
     </div>   
 </template>
 
-<script lang="ts" src="./BeerComponent.vue.ts"></script>
+<script lang="ts">
+import { Vue, Component, Prop } from 'vue-property-decorator';
+import { Beer } from '../domain/beer/Beer';
+
+@Component({})
+export default class BeerSummary extends Vue {
+    @Prop({default: Beer.EMPTY()}) private beer!: Beer;
+}
+</script>
 
 <style scoped>
 

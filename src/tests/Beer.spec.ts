@@ -1,9 +1,9 @@
 import { Beer } from '../domain/beer/Beer';
-import { BeerType } from '../domain/beer/Enums';
+import { BeerTypeOption } from '../domain/Enums';
 
-const porter = new Beer('London Porter', 'UK', 'Full of sweet winter flavours', BeerType.Porter, 6.5);
-const ipa = new Beer('Punk IPA', 'UK', 'A tropical boost', BeerType.PaleAle, 4);
-const stout = new Beer('Big Cat', 'UK', 'Dark and malty', BeerType.Stout, 7);
+const porter = new Beer('London Porter', 'UK', 'Full of sweet winter flavours', BeerTypeOption.Porter, 6.5);
+const ipa = new Beer('Punk IPA', 'UK', 'A tropical boost', BeerTypeOption.PaleAle, 4);
+const stout = new Beer('Big Cat', 'UK', 'Dark and malty', BeerTypeOption.Stout, 7);
 
 
 test('isWinterBeer() - Should return true when the type of the given beer is porter', () => {

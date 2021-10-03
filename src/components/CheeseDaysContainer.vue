@@ -16,25 +16,25 @@
     <HelloI18n />
     <h1>Add a beer to your cheese!</h1>
     <BeerForm @beerAdded="addBeer"/>
-    <BeerComponent :beer="beer" v-if="beer && beer.name != ''"/>
+    <BeerSummary :beer="beer" v-if="beer && beer.name != ''"/>
   </v-container>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import HelloI18n from './HelloI18n.vue';
-import BeerComponent from './BeerComponent.vue';
+import BeerSummary from './BeerSummary.vue';
 import BeerForm from './BeerForm.vue';
 import { Beer } from '../domain/beer/Beer';
 
 @Component({
   components: {
     HelloI18n,
-    BeerComponent,
+    BeerSummary,
     BeerForm
   },
 })
-export default class CheeseSection extends Vue {
+export default class CheeseDaysContainer extends Vue {
   @Prop() private msg!: string;
   
   beer: Beer = Beer.EMPTY();
@@ -59,7 +59,6 @@ export default class CheeseSection extends Vue {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h3 {
   margin: 40px 0 0;

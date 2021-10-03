@@ -2,7 +2,7 @@
   <v-app>
     <v-main>
       <Navbar/>
-      <CheeseSection/>
+      <CheeseDaysContainer/>
     </v-main>
   </v-app>
 </template>
@@ -10,13 +10,13 @@
 <script lang="ts">
 import { Vue } from 'vue-property-decorator';
 import Navbar from './components/Navbar.vue';
-import CheeseSection from './components/CheeseSection.vue';
+import CheeseDaysContainer from './components/CheeseDaysContainer.vue';
 
 export default Vue.extend({
   name: 'App',
 
   components: {
-    CheeseSection,
+    CheeseDaysContainer,
     Navbar
   }
 });
