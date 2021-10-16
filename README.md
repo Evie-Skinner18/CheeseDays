@@ -9,3 +9,5 @@
 - CSS
 - Git
 - Vue i18n
+- Ruby on Rails
+- Postgres
