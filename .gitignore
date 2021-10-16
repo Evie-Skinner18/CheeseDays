@@ -4,10 +4,12 @@
 
 
 # local env files
+.env
 ./frontend/.env.local
 ./frontend/.env.*.local
-./backend/.env.local
-./backend/.env.*.local
+./cheese_days_api/.env.local
+./cheese_days_api/.env
+
 
 # Log files
 ./frontend/npm-debug.log*

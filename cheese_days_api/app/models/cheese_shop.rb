@@ -1,0 +1,2 @@
+class CheeseShop < ApplicationRecord
+end

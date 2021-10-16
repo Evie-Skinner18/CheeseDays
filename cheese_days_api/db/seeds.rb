@@ -5,3 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+doom_bar = Beer.create(name: "Doom Bar", beer_type: 5, strength: "4.5", country: "UK", flavour_profile: "Classic nutty amber ale")
+punk_ipa = Beer.create(name: "Punk IPA", beer_type: 4, strength: "5", country: "UK", flavour_profile: "Tropical Scottish IPA good for the planet!")
